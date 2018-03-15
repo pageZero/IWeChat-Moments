@@ -10,9 +10,6 @@ import com.zjl.iwechatmoments.http.entity.UserEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,11 +35,11 @@ public class JsonUtils {
         return null;
     }
 
-    public List<TweetEntity> jsonToTweets(String json) {
+    public static List<TweetEntity> jsonToTweets(String json) {
         return jsonToTweets(json, null);
     }
 
-    public List<TweetEntity> jsonToTweets(String json, Filter<TweetEntity> filter) {
+    public static List<TweetEntity> jsonToTweets(String json, Filter<TweetEntity> filter) {
         JsonArray tweetsJsonArray = new JsonParser().parse(json).getAsJsonArray();
         ArrayList<TweetEntity> tweets = new ArrayList<>();
         Gson gson = new Gson();
@@ -54,21 +51,5 @@ public class JsonUtils {
             return filter.filter(tweets);
         }
         return tweets;
-    }
-
-    public String parse(Reader reader) {
-        BufferedReader bufferedReader = new BufferedReader(reader);
-        StringBuffer stringBuffer = new StringBuffer();
-        String temp;
-        try {
-            while ((temp = bufferedReader.readLine()) != null) {
-                stringBuffer.append(temp);
-            }
-            return stringBuffer.toString();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

@@ -18,12 +18,11 @@ public class TweetEntityFilter implements Filter<TweetEntity> {
             return null;
         List<TweetEntity> tweets = new ArrayList<>();
         for (TweetEntity item : items) {
-            if (item.getComments() == null &&
-                    item.getImages() == null &&
-                    item.getSender() == null) {
-                continue;
+            if (item.getSender() != null) {
+                if (item.getContent() != null || (item.getImages() != null && item.getImages().size() != 0)) {
+                    tweets.add(item);
+                }
             }
-            tweets.add(item);
         }
         return tweets;
     }
