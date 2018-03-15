@@ -7,7 +7,7 @@ import org.json.JSONObject;
  * Created by zjl on 18-3-14.
  */
 
-public class UserEntity {
+public class UserEntity{
     private String profileImage;
     private String avatar;
     private String nick;
@@ -69,23 +69,4 @@ public class UserEntity {
         public static final String NICKTAG = "nick";
         public static final String USERNAMETAG = "username";
     }
-
-    public static class JsonUtil {
-        public static UserEntity jsonToUserEntity(String json) {
-            JSONObject jsonObject = null;
-            try {
-                jsonObject = new JSONObject(json);
-                UserEntity userEntity = new UserEntity();
-                userEntity.setProfileImage(jsonObject.optString(Tag.PROFILEIMAGETAG));
-                userEntity.setAvatar(jsonObject.optString(Tag.AVATARTAG));
-                userEntity.setNick(jsonObject.optString(Tag.NICKTAG));
-                userEntity.setUserName(jsonObject.optString(Tag.USERNAMETAG));
-                return userEntity;
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-    }
-
 }
