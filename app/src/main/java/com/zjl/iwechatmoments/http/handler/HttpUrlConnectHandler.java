@@ -2,9 +2,11 @@ package com.zjl.iwechatmoments.http.handler;
 
 import com.zjl.iwechatmoments.http.constant.HttpState;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -24,14 +26,15 @@ public class HttpUrlConnectHandler implements HttpLoadHandler {
                 return null;
             }
             InputStream in = connection.getInputStream();
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            byte[] buffer = new byte[1024];
-            int len = 0;
-            while ((len = in.read(buffer)) != -1) {
-                out.write(buffer);
-                out.flush();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            StringBuffer response = new StringBuffer();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                response.append(line);
             }
-            return out.toString("utf-8");
+            reader.close();
+            in.close();connection.disconnect();
+            return response.toString();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

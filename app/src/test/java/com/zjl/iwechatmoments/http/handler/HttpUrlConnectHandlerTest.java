@@ -11,9 +11,17 @@ public class HttpUrlConnectHandlerTest {
     @Test
     public void get() throws Exception {
         HttpUrlConnectHandler handler = new HttpUrlConnectHandler();
-        String url = "http://thoughtworks-ios.herokuapp.com/user/jsmith";
-        String response = handler.get(url);
-        assertTrue(response != null);
+        String userUrl = "http://thoughtworks-ios.herokuapp.com/user/jsmith";
+        String userResponse = handler.get(userUrl);
+        assertTrue(userResponse != null);
+        assertTrue(userResponse.startsWith("{"));
+        assertTrue(userResponse.endsWith("}"));
+        //testing get tweets list
+        String tweetUrl = "http://thoughtworks-ios.herokuapp.com/user/jsmith/tweets";
+        String tweetResponse = handler.get(tweetUrl);
+        assertTrue(tweetResponse != null);
+        assertTrue(tweetResponse.startsWith("["));
+        assertTrue(tweetResponse.endsWith("]"));
     }
 
     @Test
