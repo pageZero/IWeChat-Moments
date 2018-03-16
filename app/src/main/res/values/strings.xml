@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">IWeChat Moments</string>
+    <string name="separate">:</string>
 </resources>
