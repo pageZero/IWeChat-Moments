@@ -7,7 +7,7 @@ import org.json.JSONObject;
  * Created by zjl on 18-3-14.
  */
 
-public class UserEntity{
+public class UserEntity extends Entity{
     private String profileImage;
     private String avatar;
     private String nick;

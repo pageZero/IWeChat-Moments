@@ -1,7 +1,7 @@
 package com.zjl.iwechatmoments.http.util;
 
+
 import com.zjl.iwechatmoments.http.entity.TweetEntity;
-import com.zjl.iwechatmoments.http.entity.UserEntity;
 
 import java.util.ArrayList;
 import java.util.List;

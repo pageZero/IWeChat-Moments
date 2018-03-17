@@ -6,7 +6,7 @@ import java.util.List;
  * Created by zjl on 18-3-14.
  */
 
-public class TweetEntity {
+public class TweetEntity extends Entity{
     private String content;
     private List<ImageInfo> images;
     private UserEntity sender ;
@@ -57,6 +57,15 @@ public class TweetEntity {
 
     public class ImageInfo {
         private String url;
+        private int id;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
 
         public void setUrl(String url) {
             this.url = url;

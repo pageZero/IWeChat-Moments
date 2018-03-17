@@ -12,16 +12,19 @@ import java.util.List;
 
 public interface MomentsContract {
     interface Model<T> {
+        boolean hasCache();
         void loadAllDataFromLocal();
         void loadAllDataFromRemote(IHttpListener listener);
         List<T> loadData(int lastIndex, int size);
     }
+
     interface View {
         void showUserInfo(UserEntity user);
         void showTweetList(List<TweetEntity> tweets);
-        void refresh();
-        void loadMore();
+        void onRefresh(List<TweetEntity> tweets);
+        void onLoadMore(List<TweetEntity> tweets);
     }
+
     interface Presenter {
         void loadUserInfo();
         void firstLoadTweetList();

@@ -43,7 +43,7 @@ public class HttpLoader {
                 }
             }
         };
-
+        execute(getTask);
     }
 
     public void doAsyncPost(final String url, final Map<String, String> params, final IHttpListener listener) {

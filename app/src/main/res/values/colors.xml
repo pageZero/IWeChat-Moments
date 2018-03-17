@@ -3,7 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="itemDocrationColor">#b8baba</color>
+    <color name="user_nick_tv_color">#FFF</color>
+    <color name="gray_bg">#eeeeee</color>
     <!-- tweet color -->
-    <color name="comment_list_bg_color">#cccccc</color>
+    <color name="comment_list_bg_color">#eeeeee</color>
     <color name="sender_nick_colot">#355683</color>
 </resources>
