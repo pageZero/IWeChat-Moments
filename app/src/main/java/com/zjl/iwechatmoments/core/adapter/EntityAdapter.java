@@ -114,6 +114,7 @@ public class EntityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
 
         public void bindView(TweetEntity tweet) {
+            if (tweet ==  null) return;
             Glide.with(mContext)
                     .load(ImageConstructor.mappingImageUrl(0))
                     .into(mAvatarIv);
@@ -167,6 +168,7 @@ public class EntityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
 
         public void bindView(UserEntity user) {
+            if (user == null) return;
             //image constructor
             Glide.with(mContext)
                     .load(ImageConstructor.mappingImageUrl(9))

@@ -83,16 +83,18 @@ public class MomentsActivity extends AppCompatActivity implements MomentsContrac
     }
 
     private void initDatas() {
+        //init EntityList,async load user and TweetList,but the first of moments list is user's information.
+        mEntityList.add(mUser);
         presenter.loadUserInfo();
         presenter.firstLoadTweetList();
     }
 
     @Override
     public void showUserInfo(UserEntity user) {
-        if (!mEntityList.contains(mUser)) {
+        if (user != null) {
             mUser = user;
-            mEntityList.add(user);
-            mAdapter.notifyDataSetChanged();
+            mEntityList.set(0, user);
+            mRecycleView.getAdapter().notifyDataSetChanged();
         }
     }
 
@@ -102,8 +104,7 @@ public class MomentsActivity extends AppCompatActivity implements MomentsContrac
             mEntityList.removeAll(mTweetList);
             mTweetList.clear();
             mTweetList.addAll(tweets);
-            mEntityList.addAll(tweets);
-            mAdapter.notifyDataSetChanged();
+            mEntityList.addAll(mTweetList);
             mRecycleView.setRefreshComplete();
         }
     }
@@ -118,8 +119,6 @@ public class MomentsActivity extends AppCompatActivity implements MomentsContrac
         if (tweets != null && tweets.size() > 0) {
             mTweetList.addAll(tweets);
             mEntityList.addAll(tweets);
-            mAdapter.notifyDataSetChanged();
-            mRecycleView.setRefreshComplete();
         }
         mRecycleView.setLoadMoreComplete();
     }
