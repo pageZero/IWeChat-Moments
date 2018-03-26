@@ -44,6 +44,8 @@ public class MomentsActivity extends AppCompatActivity implements MomentsContrac
         setContentView(R.layout.activity_moments);
         mContext = this;
         presenter = new MomentsPresenter(this);
+        mTweetList.clear();
+        mEntityList.clear();
         requestPermission();
         initViews();
         initAdapter();

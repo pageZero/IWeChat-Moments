@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -83,7 +84,7 @@ public class EnhanceRecyclerView extends RecyclerView {
                     params.height = LayoutParams.WRAP_CONTENT;
                     getFooterView(0).setLayoutParams(params);
                     getFooterView(0).setVisibility(View.VISIBLE);
-                    smoothScrollToPosition(totalCount);
+//                    smoothScrollToPosition(totalCount);
                     isLoad = true;
                     loadMoreListener.onLoadMore();
                 }
